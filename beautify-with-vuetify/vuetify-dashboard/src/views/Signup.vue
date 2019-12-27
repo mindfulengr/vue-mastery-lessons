@@ -3,7 +3,7 @@
     <v-row>
       <v-col>
         <h1>Singup</h1>
-        <v-form>
+        <v-form ref="signUpForm">
           <v-text-field type="text" label="Email" :rules="emailRules"></v-text-field>
           <v-autocomplete :items="browsers" label="Which browser do you use?"></v-autocomplete>
           <v-file-input label="Atach profile photo"></v-file-input>
@@ -25,7 +25,9 @@
             v-model="agreeToTerms"
             :rules="agreeToTermsRules"
           ></v-checkbox>
-          <v-btn type="submit" color="primary">Submit</v-btn>
+          <v-btn class="mr-4" type="submit" color="primary">Submit</v-btn>
+          <v-btn class="mr-4" @click="resetValidation" color="warning">Reset Validation</v-btn>
+          <v-btn @click="resetForm" color="error">Reset Form</v-btn>
         </v-form>
       </v-col>
     </v-row>
@@ -54,7 +56,15 @@ export default {
     ],
     birthday: "",
     browsers: ["Chrome", "Firefox", "Safari", "Edge", "Brave"]
-  })
+  }),
+  methods: {
+    resetValidation() {
+      this.$refs.signUpForm.resetValidation();
+    },
+    resetForm() {
+      this.$refs.signUpForm.reset();
+    }
+  }
 };
 </script>
 
