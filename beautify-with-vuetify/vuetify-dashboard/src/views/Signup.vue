@@ -25,7 +25,8 @@
             v-model="agreeToTerms"
             :rules="agreeToTermsRules"
           ></v-checkbox>
-          <v-btn class="mr-4" type="submit" color="primary">Submit</v-btn>
+          <v-btn class="mr-4" type="submit" color="primary" :disabled="!formValidity">Submit</v-btn>
+          <v-btn class="mr-4" color="success" @click="validateForm">Validate Form</v-btn>
           <v-btn class="mr-4" @click="resetValidation" color="warning">Reset Validation</v-btn>
           <v-btn @click="resetForm" color="error">Reset Form</v-btn>
         </v-form>
@@ -39,6 +40,7 @@ export default {
   data: () => ({
     menu: false,
     agreeToTerms: false,
+    formValidity: false,
     agreeToTermsRules: [
       v =>
         !!v ||
@@ -63,6 +65,9 @@ export default {
     },
     resetForm() {
       this.$refs.signUpForm.reset();
+    },
+    validateForm() {
+      this.$refs.signUpForm.validate();
     }
   }
 };
