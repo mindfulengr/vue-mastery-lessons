@@ -10,7 +10,7 @@
       multi-sort
     ></v-data-table>
     <v-snackbar v-model="snackbar">
-      You have selected {{ currentItem }}
+      You have selected {{ currentItem.name }} the {{ currentItem.title }}
       <v-btn color="pink" text @click="snackbar = false">Close</v-btn>
     </v-snackbar>
   </div>
@@ -19,7 +19,7 @@
 export default {
   data() {
     return {
-      currentItem: "",
+      currentItem: {},
       snackbar: false,
       headers: [
         {
@@ -99,7 +99,7 @@ export default {
   methods: {
     selectRow(event) {
       this.snackbar = true;
-      this.currentItem = event.name;
+      this.currentItem = event;
     }
   }
 };
