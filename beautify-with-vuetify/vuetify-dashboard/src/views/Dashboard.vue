@@ -3,7 +3,7 @@
     <h1>Dashboard</h1>
 
     <v-row>
-      <v-col v-for="sale in sales" :key="`${sale.title}`">
+      <v-col v-for="sale in sales" :key="`${sale.title}`" cols="12" md="4">
         <SalesGraph :sale="sale" />
       </v-col>
     </v-row>
@@ -23,7 +23,7 @@
       </v-col>
     </v-row>
 
-    <v-snackbar v-model="snackbar">
+    <v-snackbar :left="$vuetify.breakpoint.lgAndUp" v-model="snackbar">
       You have selected {{ selectedEmployee.name }},
       {{ selectedEmployee.title }}
       <v-btn color="pink" text @click="snackbar = false">Close</v-btn>
